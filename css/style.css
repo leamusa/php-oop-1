@@ -19,3 +19,9 @@ h1 {
 ul {
   background-color: #333;
 }
+filled-star {
+  color: #ffc107;
+}
+.empty-star {
+  color: #ccc;
+}

@@ -33,28 +33,48 @@ $movie2->setImg('https://pad.mymovies.it/filmclub/2012/05/105/locandina.jpg');
     <h1><i class="fas fa-film"></i> Favorites movies of Lea</h1>
     </header>
     <main>
-    <div class="container">
-    <ul class="list-group">
-        <li class="list-group-item">
-            <img src="<?php echo $movie1->img; ?>" class="img-fluid me-3" alt="<?php echo $movie1->title; ?>" style="max-width: 400px;">
-            <div>
-                <h5 class="mb-1"><?php echo $movie1->title; ?></h5>
-                <p class="mb-1">Language: <?php echo $movie1->language; ?></p>
-                <p class="mb-1">Grade: <?php echo $movie1->grade; ?></p>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <img src="<?php echo $movie2->img; ?>" class="img-fluid me-3" alt="<?php echo $movie2->title; ?>" style="max-width: 400px;">
-            <div>
-                <h5 class="mb-1"><?php echo $movie2->title; ?></h5>
-                <p class="mb-1">Language: <?php echo $movie2->language; ?></p>
-                <p class="mb-1">Grade: <?php echo $movie2->grade; ?></p>
-            </div>
-        </li>
-    </ul>
-</div>
-
+        <div class="container">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <img src="<?php echo $movie1->img; ?>" class="img-fluid me-3" alt="<?php echo $movie1->title; ?>" style="max-width: 600px;">
+                    <div>
+                        <h5 class="mb-1"><?php echo $movie1->title; ?></h5>
+                        <p class="mb-1">Language: <?php echo $movie1->language; ?></p>
+                        <p class="mb-1">Grade: 
+                            <?php 
+                                for($i = 1; $i <= 10; $i++) {
+                                    if ($i <= $movie1->grade) {
+                                        echo '<i class="fas fa-star filled-star"></i>';
+                                    } else {
+                                        echo '<i class="fas fa-star empty-star"></i>';
+                                    }
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img src="<?php echo $movie2->img; ?>" class="img-fluid me-3" alt="<?php echo $movie2->title; ?>" style="max-width: 600px;">
+                    <div>
+                        <h5 class="mb-1"><?php echo $movie2->title; ?></h5>
+                        <p class="mb-1">Language: <?php echo $movie2->language; ?></p>
+                        <p class="mb-1">Grade: 
+                            <?php 
+                                for($i = 1; $i <= 10; $i++) {
+                                    if ($i <= $movie2->grade) {
+                                        echo '<i class="fas fa-star filled-star"></i>';
+                                    } else {
+                                        echo '<i class="fas fa-star empty-star"></i>';
+                                    }
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </main>
+    
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
