@@ -29,6 +29,6 @@ Confirm reading as usual and have fun :baby-Yoda: :php:
 
 # classMovie:
 
-This is a class that represents a movie. It has four public properties: $director, $title, $genre, and $img.
-__construct($\_director, $_title, $_genre): This is a constructor method that gets called when a new Movie object is created. It sets the $director, $title, and $genre properties of the movie.
+This is a class that represents a movie. It has four public properties: $title, $language,$grade and $img.
+__construct($\_language, $_title, $_grade): This is a constructor method that gets called when a new Movie object is created. It sets the $language, $title, and $grade properties of the movie.
 setImg($\_img): This method sets the $img property of the movie. It's used to assign an image to the movie object.
