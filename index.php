@@ -1,23 +1,25 @@
 <?php
-// include class Movie
+// Include la classe Movie
 include_once './class/movie.php';
+// Include la classe serietv
+include_once './class/tvserie.php';
 
-// Create two obj Movie
-$movie1 = new Movie('Quei bravi ragazzi', 'english', 8);
-$movie2 = new Movie('La grande Bellezza', 'italian', 9);
 
-// Impost img for movies
-$movie1->setImg('https://pad.mymovies.it/filmclub/2006/03/273/locandina.jpg');
-$movie2->setImg('https://pad.mymovies.it/filmclub/2012/05/105/locandina.jpg');
+// Crea due oggetti Movie
+$movies = [
+    new Movie('Quei bravi ragazzi', 'english', 8),
+    new Movie('La grande Bellezza', 'italian', 9)
+];
 
-// print info
-//var_dump($movie1);
-//var_dump($movie2);
+// Imposta il percorso dell'immagine per ciascun film
+$movies[0]->setImg('https://pad.mymovies.it/filmclub/2006/03/273/locandina.jpg');
+$movies[1]->setImg('https://pad.mymovies.it/filmclub/2012/05/105/locandina.jpg');
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Title</title>
+    <title>Favorites movies of Lea</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -30,47 +32,32 @@ $movie2->setImg('https://pad.mymovies.it/filmclub/2012/05/105/locandina.jpg');
 
 <body>
     <header>
-    <h1><i class="fas fa-film"></i> Favorites movies of Lea</h1>
+        <h1><i class="fas fa-film"></i> Favorites movies of Lea</h1>
     </header>
+
     <main>
         <div class="container">
             <ul class="list-group">
-                <li class="list-group-item">
-                    <img src="<?php echo $movie1->img; ?>" class="img-fluid me-3" alt="<?php echo $movie1->title; ?>" style="max-width: 600px;">
-                    <div>
-                        <h5 class="mb-1"><?php echo $movie1->title; ?></h5>
-                        <p class="mb-1">Language: <?php echo $movie1->language; ?></p>
-                        <p class="mb-1">Grade: 
-                            <?php 
-                                for($i = 1; $i <= 10; $i++) {
-                                    if ($i <= $movie1->grade) {
-                                        echo '<i class="fas fa-star filled-star"></i>';
-                                    } else {
-                                        echo '<i class="fas fa-star empty-star"></i>';
+                <?php foreach ($movies as $movie): ?>
+                    <li class="list-group-item">
+                        <img src="<?php echo $movie->img; ?>" class="img-fluid me-3" alt="<?php echo $movie->getTitle(); ?>" style="max-width: 600px;">
+                        <div>
+                            <h5 class="mb-1"><?php echo $movie->getTitle(); ?></h5>
+                            <p class="mb-1">Language: <?php echo $movie->getLanguage(); ?></p>
+                            <p class="mb-1">Grade: 
+                                <?php 
+                                    for ($i = 1; $i <= 10; $i++) {
+                                        if ($i <= $movie->getGrade()) {
+                                            echo '<i class="fas fa-star filled-star"></i>';
+                                        } else {
+                                            echo '<i class="fas fa-star empty-star"></i>';
+                                        }
                                     }
-                                }
-                            ?>
-                        </p>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <img src="<?php echo $movie2->img; ?>" class="img-fluid me-3" alt="<?php echo $movie2->title; ?>" style="max-width: 600px;">
-                    <div>
-                        <h5 class="mb-1"><?php echo $movie2->title; ?></h5>
-                        <p class="mb-1">Language: <?php echo $movie2->language; ?></p>
-                        <p class="mb-1">Grade: 
-                            <?php 
-                                for($i = 1; $i <= 10; $i++) {
-                                    if ($i <= $movie2->grade) {
-                                        echo '<i class="fas fa-star filled-star"></i>';
-                                    } else {
-                                        echo '<i class="fas fa-star empty-star"></i>';
-                                    }
-                                }
-                            ?>
-                        </p>
-                    </div>
-                </li>
+                                ?>
+                            </p>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </main>
